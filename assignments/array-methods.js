@@ -54,18 +54,28 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 {"id":50,"first_name":"Shell","last_name":"Baine","email":"sbaine1d@intel.com","shirt_size":"M","company_name":"Gabtype","donation":171}];
 
 // ==== Challenge 1: Use .forEach() ====
-// The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
+// The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName.
 let fullName = [];
+runners.forEach(function(element) {
+  fullName.push(`${element.first_name} ${element.last_name}`)
+})
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
-console.log(allCaps); 
+runners.map(function(runner) {
+  allCaps.push(runner['first_name'].toUpperCase());
+})
+console.log(allCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+const largeShirts = runners.filter(function(runner) {
+  if (runner.shirt_size === 'L') {
+    return true;
+  }
+})
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
@@ -77,7 +87,27 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Find the runners with donations over 100
+const largeDonations = runners.filter(function(runner) {
+  if (runner.donation > 100) {
+    return true;
+  }
+})
+console.log(largeDonations);
 
 // Problem 2
+// Create an email list for all the runners
+let emailList = [];
+runners.forEach(function(element) {
+  emailList.push(`${element.email}`)
+})
+console.log(emailList);
+
 
 // Problem 3
+// The director has been removed.
+let allLower = [];
+allCaps.map(function(element) {
+  allLower.push(element.toLowerCase());
+})
+console.log(allLower);
